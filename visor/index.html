@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visor SIG 250 · TPI SIG UTN FRRe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@10/ol.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.jsdelivr.net/npm/ol@10/dist/ol.js"></script>
+</head>
+<body>
+  <aside id="panel">
+    <header>
+      <h1>Visor SIG 250</h1>
+      <p>TPI · Sistemas de Información Geográfica · UTN FRRe</p>
+    </header>
+
+    <section>
+      <h2>Herramientas</h2>
+      <div id="herramientas">
+        <button data-modo="navegar" class="activo" title="Paneo y zoom">✋ Navegar</button>
+        <button data-modo="punto" title="Clic sobre el mapa para consultar la capa elegida">🔎 Consulta punto</button>
+        <button data-modo="rectangulo" title="Arrastre un rectángulo para consultar la capa elegida">▭ Consulta rectángulo</button>
+        <button data-modo="medir" title="Clic para agregar vértices, doble clic para terminar">📏 Medir distancia</button>
+        <button data-modo="alta" title="Clic en el mapa para ubicar una nueva incidencia">➕ Nueva incidencia</button>
+      </div>
+      <label class="campo">Capa a consultar
+        <select id="capaConsulta"></select>
+      </label>
+      <button id="limpiar" class="secundario">Limpiar selección y mediciones</button>
+      <p id="ayuda" class="ayuda">Arrastre para desplazar el mapa; rueda del mouse o +/− para el zoom.</p>
+    </section>
+
+    <section>
+      <h2>Capas</h2>
+      <ul id="listaCapas"></ul>
+    </section>
+
+    <section>
+      <h2>Leyenda</h2>
+      <div id="leyenda"></div>
+    </section>
+  </aside>
+
+  <main>
+    <div id="mapa"></div>
+    <div id="barraEstado">
+      <span>Escala <strong id="escala">–</strong></span>
+      <span>Lon, Lat <strong id="coords"></strong></span>
+    </div>
+
+    <div id="resultados" class="oculto">
+      <div class="res-cabecera">
+        <strong id="resTitulo">Resultados</strong>
+        <button id="cerrarResultados" title="Cerrar">✕</button>
+      </div>
+      <div id="resCuerpo"></div>
+    </div>
+  </main>
+
+  <!-- Formulario de alta de incidencias -->
+  <div id="modalAlta" class="oculto">
+    <form id="formAlta">
+      <h3>Nueva incidencia</h3>
+      <p class="ayuda" id="altaCoords"></p>
+      <label class="campo">Tipo
+        <select name="tipo" required>
+          <option>Bache</option>
+          <option>Señalización dañada</option>
+          <option>Banquina deteriorada</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label class="campo">Descripción
+        <textarea name="descripcion" rows="3" maxlength="255" placeholder="Ej.: bache profundo en carril norte"></textarea>
+      </label>
+      <label class="campo">Fecha
+        <input type="date" name="fecha" required>
+      </label>
+      <div class="botones">
+        <button type="button" id="cancelarAlta" class="secundario">Cancelar</button>
+        <button type="submit">Guardar en PostGIS</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="aviso" class="oculto"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
