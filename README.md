@@ -6,11 +6,12 @@ Docentes: Ing. Ilse Hodapp · Ing. Rodrigo Valdés.
 
 Integrantes del grupo:
 
-- _(completar)_
-- _(completar)_
-- _(completar)_
-- _(completar)_
-
+-Almirón Sabugo, Alejo
+-Dominguez, Nahuel
+-Sanchez, Rosalia
+-Tomas, Damian
+-Vega, Lourdes
+-Velazquez, Victoria
 ---
 
 ## Descripción
